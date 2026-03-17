@@ -9,12 +9,18 @@ public class Fibonacci {
         System.out.println("Quantas vezes você quer que a seuqência vá?");
         int qtd = lol.nextInt();
 
-        int num = 1;
-        for(int i=1; i<=qtd; i++){
-               num = num+2;
-               System.out.println(num);
-        }
+        long numo = 0;
+        long numat = 1;
 
+        for(int i=1; i<=qtd; i++){
+
+            long prox = numo+numat;
+            System.out.println(numo+"  ");
+
+            numo = numat;
+            numat = prox;
+        }
+        System.out.println("Finalização da sequência!");
 
     }
 }

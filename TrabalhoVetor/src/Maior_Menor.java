@@ -8,19 +8,32 @@ public class Maior_Menor {
 
         int [] num = new int[10];
 
-        //processo 1
+        //processo 1 ---- certo
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < num.length; i++) {
             System.out.println("Digite um número qualquer: ");
             num[i] = pop.nextInt();
         }
 
-        //processo 2
+        //processo 2 ---- faltou definir as posições e o número maior ou menor
+         double maior = num[0], menor = num[0];
+        int posMaior = 0, posMenor = 0;
 
-        if (num.length < 10){
-            System.out.println("Seu maior número é: "+ Arrays.toString(num)+". Na posição >>"+(num.length+1));
-        }else {
-            System.out.println("Seu menor número é: "+Arrays.toString(num)+". Na posição >>"+(num.length+1));
+        for (int i = 1; i < num.length ; i++) {
+            if (num[i]> maior){
+                maior = num[i];
+                posMaior = i;
+            }
+            if (num[i] < menor){
+                menor = num[i];
+                posMenor = i;
+            }
         }
+
+        System.out.println("Numero: "+maior+" na posição: "+posMaior);
+        System.out.println("Numero: "+menor+" na posição: "+posMenor);
+
+
+
     }
 }

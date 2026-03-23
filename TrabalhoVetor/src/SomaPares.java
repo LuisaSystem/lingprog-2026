@@ -6,16 +6,19 @@ public class SomaPares {
 
         int soma = 0;
         int [] num = new int[8];
-        for(int i=0; i<8; i++){
+        for(int i=0; i< num.length; i++){
             System.out.println("Digite 8 núemros para serem somados: ");
             num[i] = o.nextInt();
-            soma += num[i];
+
+            // a lógica estava certa, mas colocado nos lugares errados
+            if (num[i]%2 == 0){
+                soma+=num[i];
+            }
         }
-        if (soma%2 ==0){
-            System.out.println("Seu resultado: "+soma);
-        }else{
-            System.out.println("Nenhum resultado feito ainda...");
-        }
+
+        System.out.println("================================");
+        System.out.println("Resultado de sua soma: "+soma);
+        System.out.println("================================");
 
     }
 }

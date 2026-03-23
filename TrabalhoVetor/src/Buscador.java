@@ -1,36 +1,36 @@
-import java.util.Arrays;
-import java.util.Objects;
+
 import java.util.Scanner;
 
 public class Buscador {
     public static void main(String[] args) {
         Scanner ter = new Scanner(System.in);
 
-        String [] nome =  new String[10];
+        String [] nome =  new String[5];
 
         // processo de colocar o nome
-        String pes;
-        for (int i = 0; i < 10 ; i++) {
+
+        for (int i = 0; i < nome.length ; i++) {
             System.out.println("Digite nomes par a sua pesquisa: ");
             nome[i] = ter.next();
-            pes = nome[i];
-            // processo de buscar o nome
-            do {
-                System.out.println("O que deseja pesquisar?");
-                pes = ter.next();
-            }while(pes.equals(nome[i]));
+        }
+        // processo de buscar o nome
+        System.out.println("O que deseja pesquisar?");
+        String pes = ter.next();
+        boolean encontrado = false;
+
+        for (int i = 0; i < nome.length; i++) {
+            if (nome[i].equalsIgnoreCase(pes)){
+                System.out.println("-----------------------------------------------------");
+                System.out.println("O seu nome de pesquisa"+nome[i]+" foi encontrado na posição"+i+"!");
+                System.out.println("-----------------------------------------------------");
+                encontrado = true;
+                break;
+            }
         }
 
-        System.out.println("-----------------------------------------------------");
-        System.out.println("O seu nome de pesquisa foi:  "+Arrays.asList(nome)+"!");
-        System.out.println("-----------------------------------------------------");
+        if (!encontrado){
+            System.out.println("Pesquisa não encontrada!");
+        }
 
-
-
-
-        /*while (nome.length < 10){
-            System.out.println("O que deseja pesquisar?");
-
-        }*/
     }
 }

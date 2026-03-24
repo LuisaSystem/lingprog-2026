@@ -1,6 +1,8 @@
 public class FibonacciVetor {
     public static void main(String[] args) {
 
+            // certeiii
+
                 int n = 10; // Quantidade de termos
                 long[] fib = new long[n];
 

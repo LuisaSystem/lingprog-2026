@@ -1,36 +1,40 @@
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Media_Salario {
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
 
-        // os 5 nomes
-        String [] nomes = new String[5];
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Digite os nomes dos funcionários: ");
-            nomes[i]= ler.next();
-
-        }
-
         // 5 salarios
-        float media = 0;
-        float [] sal = new float[5];
-        for (int i = 0; i < 5; i++) {
+        double soma = 0;
+        double [] sal = new double[5];
+
+        for (int i = 0; i < sal.length; i++) {
             System.out.println("Agora, os slarios deles: R$");
-            sal[i] = ler.nextFloat();
-            media+=sal[i];
+            sal[i] = ler.nextDouble();
+            soma+=sal[i];
         }
 
-        if (media > 1.600f){
-            System.out.println("Nomes:\n "+ Arrays.asList(nomes)+", \ne salário de R$"+media+"  ");
-        }else if (media < 1.600f){
-            System.out.println("Nomes:\n "+ Arrays.asList(nomes)+", \ne salário de R$"+media+" ");
+        double media = soma/ sal.length;
+
+        int acima = 0, abaixo = 0, igual = 0;
+
+        for (int i = 0; i < sal.length; i++) {
+            if (sal[i] > media){
+                acima++;
+            } else if (sal[i] < media) {
+                abaixo++;
+            }else {
+                igual++;
+            }
         }
 
-        //System.out.println("Salários: R$\n "+ sal) "  ");
+        // Exibição dos resultados
+        System.out.println("\n--- RELATÓRIO ESTATÍSTICO ---");
+        System.out.printf("Média Salarial da Empresa: R$ %.2f%n", media);
+        System.out.println("Funcionários acima da média: " + acima);
+        System.out.println("Funcionários abaixo da média: " + abaixo);
+        System.out.println("Funcionários que ganham exatamente a média: " + igual);
 
     }
 }

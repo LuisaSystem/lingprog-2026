@@ -17,22 +17,31 @@ public class ExMatriz {
             }
             System.out.println("");
         }
+
+        float mediaGeral = notas.length * notas[0].length;
+        System.out.printf("\n A média das notas é %.2f ", soma/mediaGeral);
+
         System.out.println("-----------------------------------------");
-            float nota = 0;
-        for (int i = 0; i < notas.length; i++) {
-            System.out.println("Notas do "+(i+1)+"º Aluno!");
-            nota += notas[i];
-            System.out.printf("%.2f   ",nota);
+
+        for (int i = 0; i < notas.length; i++) { // aluno only
+            float acum = 0;
+            for (int j = 0; j < notas[0].length ; j++) {
+                acum+=notas[i][j];
+            }
+            float media = acum / notas[i].length;
+
+            System.out.println("Notas do "+(i+1)+"º Aluno! "+media);
+
         }
-
-        for (int i = 0; i < notas[0].length; i++) {
-            System.out.println("Notas da "+(i+1)+"º prova!");
-            System.out.printf("%.2f   ",notas[i]);
+        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        for (int j = 0; j < notas[0].length; j++) { // prova only
+            float acum = 0;
+            for (int i = 0; i < notas.length; i++) {
+                acum += notas[i][j];
+            }
+            float m = acum/ notas.length;
+            System.out.println("Notas do "+(j+1)+"º Prova! "+m);
         }
-
-
-       float media = notas.length * notas[0].length;
-        System.out.printf("\n A média das notas é %.2f ", soma/media);
 
     }
 }

@@ -24,6 +24,7 @@ public class Exercicios {
         else return "Reprovado";
     }
     public static void main(String[] args){
+        //ex 1
         Scanner entrada = new Scanner(System.in);
         System.out.println("Informe a base");
         double base = entrada.nextDouble();
@@ -31,13 +32,22 @@ public class Exercicios {
         double altura = entrada.nextDouble();
         System.out.println("Área do retângulo: " + calcularAR(base, altura));
         System.out.println("Vamos verificar se a base do retângulo é par");
+        //ex 2
         if (ehPar((int)base)){
             System.out.println("Base é par");
         }
         else System.out.println("Base é ímpar");
 
+        //ex 3
         System.out.println("Informe temperaatura em celsius");
         float celsius = entrada.nextFloat();
         System.out.println("Farnheint: "+converteTemp(celsius));
+
+        //ex 4
+        System.out.println("Informe a media do aluno");
+        float media = entrada.nextFloat();
+        System.out.println("Situação do aluno"+ avaliacao(media));
+
+
     }
 }

@@ -2,18 +2,20 @@
 import java.util.Scanner;
 
 public class Buscador {
-    public static void main(String[] args) {
-        Scanner ter = new Scanner(System.in);
-
-        String [] nome =  new String[5];
-
+    //func1
+    public static void colocarNome(String [] nome){
         // processo de colocar o nome
 
+        Scanner ter = new Scanner(System.in);
         for (int i = 0; i < nome.length ; i++) {
             System.out.println("Digite nomes par a sua pesquisa: ");
             nome[i] = ter.next();
         }
+    }
+    //func2
+    public static void buscarNome(String [] nome){
         // processo de buscar o nome
+        Scanner ter = new Scanner(System.in);
         System.out.println("O que deseja pesquisar?");
         String pes = ter.next();
         boolean encontrado = false;
@@ -21,7 +23,7 @@ public class Buscador {
         for (int i = 0; i < nome.length; i++) {
             if (nome[i].equalsIgnoreCase(pes)){
                 System.out.println("-----------------------------------------------------");
-                System.out.println("O seu nome de pesquisa"+nome[i]+" foi encontrado na posição"+i+"!");
+                System.out.println("O seu nome de pesquisa "+nome[i]+" foi encontrado na posição "+i+"!");
                 System.out.println("-----------------------------------------------------");
                 encontrado = true;
                 break;
@@ -31,6 +33,11 @@ public class Buscador {
         if (!encontrado){
             System.out.println("Pesquisa não encontrada!");
         }
+    }
+    public static void main(String[] args) {
+        String [] nome =  new String[5];
 
+        colocarNome(nome);
+        buscarNome(nome);
     }
 }

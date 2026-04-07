@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Bubble_Sort {
+    public static void
     public static void main(String[] args) {
         Scanner ter = new Scanner(System.in);
         Scanner entrada = new Scanner(System.in);

@@ -1,12 +1,12 @@
 import java.util.Scanner;
+
+// ~ NONO EMAGRECIMENTO ~
+
 //acertei além do corrigir
 public class Substituicao {
-    public static void main(String[] args) {
+    public  static void subEngine(int[] number){
         Scanner p = new Scanner(System.in);
 
-        // processo
-
-        int [] number = new int[10];
         for (int i=0; i< number.length; i++){
             System.out.println("Coloque 10 números a serem substituidos ocultamente: ");
             number[i]= p.nextInt();
@@ -21,7 +21,11 @@ public class Substituicao {
         for (int i = 0; i < number.length; i++) {
             System.out.println(number[i]+"  ");
         }
+    }
+    public static void main(String[] args) {
+        // processo
 
-
+        int [] number = new int[10];
+        subEngine(number);
     }
 }

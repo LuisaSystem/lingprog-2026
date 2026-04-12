@@ -1,12 +1,12 @@
 import java.util.Scanner;
+
+// ~ DÉCIMO EMAGRECIMENTO ~
+
 //corrigido com lógica exata
 
 public class Uniao {
-    public static void main(String[] args) {
+    public static void unirEngine(int[] vet, int[] vet2, int[] vet3){
         Scanner ler = new Scanner(System.in);
-        int [] vet = new int[5];
-        int [] vet2 = new int[5];
-        int [] vet3 = new int[10];
 
         //primeiro vet
 
@@ -32,5 +32,13 @@ public class Uniao {
         for (int num : vet3) {
             System.out.println(num+"  ");
         }
+    }
+    public static void main(String[] args) {
+
+        int [] vet = new int[5];
+        int [] vet2 = new int[5];
+        int [] vet3 = new int[10];
+
+        unirEngine(vet, vet2, vet3);
     }
 }

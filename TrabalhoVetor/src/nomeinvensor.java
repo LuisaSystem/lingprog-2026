@@ -1,10 +1,12 @@
 import java.util.Scanner;
 
+// ~ SEXTO EMAGRECIMENTO ~
+
+
 public class nomeinvensor{
-    public static void main(String[] args) {
+    public static void inversorEngine(String[] nomes){
         Scanner ler = new Scanner(System.in);
 
-        String[] nomes = new String[5];
         int tamanho = nomes.length;
 
         for (int i=1; i< nomes.length; i++){
@@ -17,6 +19,9 @@ public class nomeinvensor{
         for(int i= nomes.length - 1 ; i>=0; i--){//corrigido
             System.out.println(nomes[i]);
         }
-
+    }
+    public static void main(String[] args) {
+        String[] nomes = new String[5];
+        inversorEngine(nomes);
     }
 }

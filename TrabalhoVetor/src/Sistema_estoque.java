@@ -1,13 +1,11 @@
 import java.util.Scanner;
 
-public class Sistema_estoque {
-    public static void main(String[] args) {
-        Scanner ler = new Scanner(System.in);
-         // cada definição dos vetores
+// ~ SÉTIMO EMAGRECIMENTO ~
 
-        int [] qtd = new int[5];
-        String [] prod = new String[5];
-        
+public class Sistema_estoque {
+    public static void storageMode(int [] qtd, String[] prod){
+        Scanner ler = new Scanner(System.in);
+
         // lendo o que oo usuario tem
         for (int i = 0; i < prod.length; i++) {
             System.out.println("Coloque o número do produto");
@@ -32,5 +30,13 @@ public class Sistema_estoque {
             }
 
         }
+    }
+    public static void main(String[] args) {
+         // cada definição dos vetores
+
+        int [] qtd = new int[5];
+        String [] prod = new String[5];
+        
+        storageMode(qtd, prod);
     }
 }

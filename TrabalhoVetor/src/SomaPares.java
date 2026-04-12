@@ -1,11 +1,12 @@
 import java.util.Scanner;
 
+// ~ OITAVO EMAGRECIMENTO ~
+
 public class SomaPares {
-    public static void main(String[] args) {
+    public static void somePares(int[] num){
         Scanner o = new Scanner(System.in);
 
         int soma = 0;
-        int [] num = new int[8];
         for(int i=0; i< num.length; i++){
             System.out.println("Digite 8 núemros para serem somados: ");
             num[i] = o.nextInt();
@@ -20,5 +21,9 @@ public class SomaPares {
         System.out.println("Resultado de sua soma: "+soma);
         System.out.println("================================");
 
+    }
+    public static void main(String[] args) {
+        int [] num = new int[8];
+        somePares(num);
     }
 }

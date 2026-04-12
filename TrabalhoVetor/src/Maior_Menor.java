@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class Maior_Menor {
-    public static void main(String[] args) {
-        Scanner pop = new Scanner(System.in);
+// ~ QUARTO EMAGRECIMENTO ~
 
-        int [] num = new int[10];
+public class Maior_Menor {
+    public static void maiorOumenor(int [] num ){
+        Scanner pop = new Scanner(System.in);
 
         //processo 1 ---- certo
 
@@ -14,7 +14,7 @@ public class Maior_Menor {
         }
 
         //processo 2 ---- faltou definir as posições e o número maior ou menor
-         double maior = num[0], menor = num[0];
+        double maior = num[0], menor = num[0];
         int posMaior = 0, posMenor = 0;
 
         for (int i = 1; i < num.length ; i++) {
@@ -33,5 +33,9 @@ public class Maior_Menor {
 
 
 
+    }
+    public static void main(String[] args) {
+        int [] num = new int[10];
+        maiorOumenor(num);
     }
 }

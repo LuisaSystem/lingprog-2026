@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
+// ~ QUINTO EMEGRECIMENTO ~
+
 public class Media_Salario {
-    public static void main(String[] args) {
+    public static void salariosEngine(double [] sal){
         Scanner ler = new Scanner(System.in);
 
         // 5 salarios
         double soma = 0;
-        double [] sal = new double[5];
-
         for (int i = 0; i < sal.length; i++) {
             System.out.println("Agora, os slarios deles: R$");
             sal[i] = ler.nextDouble();
@@ -34,6 +34,12 @@ public class Media_Salario {
         System.out.println("Funcionários acima da média: " + acima);
         System.out.println("Funcionários abaixo da média: " + abaixo);
         System.out.println("Funcionários que ganham exatamente a média: " + igual);
+
+    }
+    public static void main(String[] args) {
+
+        double [] sal = new double[5];
+        salariosEngine(sal);
 
     }
 }

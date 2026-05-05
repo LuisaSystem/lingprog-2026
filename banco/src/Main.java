@@ -24,6 +24,24 @@ public class Main {
         ps.executeUpdate();
         System.out.println("Produto inserido!");
         ps.close();
+    }// aula 04/05
+
+    public static  void consulta(Connection conn) throws SQLException{
+        //criando o comando SQL
+        String sql = "SELECT * FROM produtos ORDER BY nome";
+
+        //cria statement
+        Statement stmt = conn.createStatement();
+        //executa e consulta o resultado em rs
+        ResultSet rs = stmt.executeQuery(sql);
+
+        while (rs.next()){
+            int id = rs.getInt("id");
+            String nome = rs.getString("nome");
+            double preco = rs.getDouble("preco");
+            int estoque = rs.getInt("estoque");
+            System.out.printf("[%d] %s - R$ %.2f (estoque: %d)%n", id, nome, preco, estoque);
+        }
     }
     public static void main(String[] args) {
         String url = "jdbc:postgresql://localhost:5432/lojaD";
@@ -31,7 +49,8 @@ public class Main {
             Connection conn = DriverManager.getConnection(url, "postgres","fatec123*");
             System.out.println("Conexão Sucedida!");
             criarTabelas(conn);
-            insere(conn, "mouse", 158, 3);
+            insere(conn, "placa de video", 1100, 85);
+            consulta(conn);
         }catch (SQLException e){
             System.out.println("Deu errado!" + e.getMessage());
         }

@@ -43,6 +43,21 @@ public class Main {
             System.out.printf("[%d] %s - R$ %.2f (estoque: %d)%n", id, nome, preco, estoque);
         }
     }
+
+    public static void deletar(Connection conn, int id) throws SQLException{
+        String sql = "DELETE FROM produtos WHERE id = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, id);
+
+        int linhasafetadas = ps.executeUpdate();
+        ps.close();
+
+        if (linhasafetadas > 0){
+            System.out.println("APAGADO COM SUCESSO!");
+        }else{
+            System.out.println("ID NÃO ENCONTRADO!");
+        }
+    }
     public static void main(String[] args) {
         String url = "jdbc:postgresql://localhost:5432/lojaD";
         try {// criando a conexão
@@ -51,6 +66,7 @@ public class Main {
             criarTabelas(conn);
             insere(conn, "placa de video", 1100, 85);
             consulta(conn);
+            deletar(conn, 4);
         }catch (SQLException e){
             System.out.println("Deu errado!" + e.getMessage());
         }

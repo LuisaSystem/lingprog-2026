@@ -57,16 +57,31 @@ public class Main {
         }else{
             System.out.println("ID NÃO ENCONTRADO!");
         }
-    }
+    }// aula 05/05
+
+    public static void atualizarpreco(Connection conn, int id, double novoPreco) throws SQLException{
+        String sql = "UPDATE produtos SET preco = ? WHERE id =?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setDouble(1, novoPreco);
+        ps.setInt(2, id);
+        int linhasafetadas = ps.executeUpdate();
+        if (linhasafetadas > 0){
+            System.out.println("Preço atualizado!");
+        }else {
+            System.out.println("Produto não encontrado!");
+        }
+    }// aula 11/05
+
     public static void main(String[] args) {
         String url = "jdbc:postgresql://localhost:5432/lojaD";
         try {// criando a conexão
             Connection conn = DriverManager.getConnection(url, "postgres","fatec123*");
             System.out.println("Conexão Sucedida!");
             criarTabelas(conn);
-            insere(conn, "placa de video", 1100, 85);
+            //insere(conn, "placa de video", 1100, 85);
             consulta(conn);
-            deletar(conn, 4);
+           // deletar(conn, 4);
+            atualizarpreco(conn, 2, 34);
         }catch (SQLException e){
             System.out.println("Deu errado!" + e.getMessage());
         }

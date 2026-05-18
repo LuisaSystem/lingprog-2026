@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Main{
@@ -47,18 +44,92 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
   }
 /// ////////////////////////////////////////////////////////////////////////////////////////////
 
-public static void inserir(Connection conn, Scanner sc) throws SQLException{
+  public static void inserirCliente(Connection conn, Scanner sc) throws SQLException{
 
-  //criando a inserção
-  String sql = "INSERT INTO clientes(nome, endereco, telefone, data_niver, cpf, email) values(?, ?, ?, ?, ?, ?)";
+    //criando a inserção
+    String sql = "INSERT INTO clientes(nome, endereco, telefone, data_niver, cpf, email) values(?, ?, ?, ?, ?, ?)";
+
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setString(1, nome);
+    ps.setString(2, endereco);
+    ps.setString(3, telefone);
+    ps.setDate(4, data_niver);
+    ps.setString(5, cpf);
+    ps.setString(6, email);
+
+  }// clientes
+  public static void inserirProduto(Connection conn, Scanner sc) throws SQLException{
+
+    //criando a inserção
+    String sql = "INSERT INTO produtos (categoria, tamanhos, preco, desconto, quantidade) values(?, ?, ?, ?, ?)";
+
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setString(1, categoria);
+    ps.setString(2, tamanhos);
+    ps.setDouble(3, preco);
+    ps.setDouble(4, desconto);
+    ps.setInt(5, quantidade);
+    ps.executeUpdate();
+    System.out.println("Produto "+categoria+" tamanho: "+tamanhos+" com o preco R$: "+preco+" desconto: "+desconto+", da quantidade: "+quantidade+"!");
+  }// inserir produtos
+
+  public static void inserirFuncionario(Connection conn, Scanner sc) throws SQLException{
+
+    //criando a inserção
+    String sql = "INSERT INTO funcionarios(nome, endereco, telefone, data_niver, email, senha) values(?, ?, ?, ?, ?, ?)";
+
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setString(1, nome);
+    ps.setString(2, endereco);
+    ps.setString(3, telefone);
+    ps.setDate(4, data_niver);
+    ps.setString(5, email);
+    ps.setString(6, senha);
+    ps.executeUpdate();
+    System.out.println("Funcionário "+nome+" inserido com sucesso!");
+    ps.close();
+
+  }// cadastro do funcionário
+
+public static void consultarProduto(Connection conn) throws SQLException{
+
+  String sql = "SELECT * FROM produtos ORDER BY nome";
+
+  Statement stmt = conn.createStatement();
+  ResultSet rs = stmt.executeQuery(sql);
+
+  while (rs.next()){
+    int id = rs.getInt("id");
+    String categoria = rs.getString("categoria");
+    String tamanhos = rs.getString("tamanhos");
+    double preco = rs.getDouble("preco");
+    double desconto = rs.getDouble("desconto");
+    int quantidade = rs.getInt("quantidade");
+    System.out.printf("[%d] %s - R$ %.2f (quantidade: %d)%n", id, categoria,tamanhos, preco, desconto, quantidade);
+  }
 
 
 }
 
+  public static void consultarFuncionario(Connection conn) throws SQLException{
+
+    String sql = "SELECT * FROM funcionarios ORDER BY nome";
+
+    Statement stmt = conn.createStatement();
+    ResultSet rs = stmt.executeQuery(sql);
+
+    while (rs.next()){
+      int id = rs.getInt("id");
+      String categoria = rs.getString("categoria");
+      String tamanhos = rs.getString("tamanhos");
+      double preco = rs.getDouble("preco");
+      double desconto = rs.getDouble("desconto");
+      int quantidade = rs.getInt("quantidade");
+      System.out.printf("[%d] %s - R$ %.2f (quantidade: %d)%n", id, categoria,tamanhos, preco, desconto, quantidade);
+    }
 
 
-
-
+  }
 
 
 
@@ -76,7 +147,7 @@ public static void inserir(Connection conn, Scanner sc) throws SQLException{
 
 
   //não mexer ao tudo
-  public void main(String[] args) {
+  public static void main(String[] args) {
     String url = "jdbc:postgresql://localhost:5432/iansa";
     try {
       Connection conn = DriverManager.getConnection(url, "postgres", "fatec123*");

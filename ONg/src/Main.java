@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main{
@@ -11,8 +12,8 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
                 "endereco TEXT NOT NULL," +
                 "telefone TEXT NOT NULL," +
                 "data_aniver date NOT NULL," +
-                "cpf TEXT NOT NULL," +
-                "email TEXT NOT NULL)";
+                "cpf TEXT UNIQUE NOT NULL," +
+                "email TEXT UNIQUE NOT NULL)";
     Statement stmt = conn.createStatement();
     stmt.execute(sql);
     stmt.close();
@@ -36,7 +37,8 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
             "endereco TEXT NOT NULL," +
             "telefone TEXT NOT NULL," +
             "data_aniver date NOT NULL," +
-            "email TEXT NOT NULL," +
+            "cpf TEXT UNIQUE NOT NULL," +
+            "email TEXT UNIQUE NOT NULL," +
             "senha TEXT NOT NULL)";
     Statement stmt = conn.createStatement();
     stmt.execute(sql);
@@ -45,6 +47,20 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
 /// ////////////////////////////////////////////////////////////////////////////////////////////
 
   public static void inserirCliente(Connection conn, Scanner sc) throws SQLException{
+    //perguntas
+    System.out.println("QUal o nome do funcionário? ");
+    String nome = sc.next();
+    System.out.println("QUal o endereço do funcionário? ");
+    String endereco = sc.next();
+    System.out.println("QUal o telefone do funcionário? ");
+    String telefone = sc.next();
+    System.out.println("QUal a data de nascimento do funcionário? (aaaa-mm-dd)");
+    String data_niver_str = sc.next();
+    LocalDate data_niver = LocalDate.parse(data_niver_str);
+    System.out.println("QUal o CPF do funcionário? ");
+    String cpf = sc.next();
+    System.out.println("QUal o email do funcionário? ");
+    String email = sc.next();
 
     //criando a inserção
     String sql = "INSERT INTO clientes(nome, endereco, telefone, data_niver, cpf, email) values(?, ?, ?, ?, ?, ?)";
@@ -53,12 +69,31 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
     ps.setString(1, nome);
     ps.setString(2, endereco);
     ps.setString(3, telefone);
-    ps.setDate(4, data_niver);
+    ps.setDate(4, Date.valueOf(data_niver));
     ps.setString(5, cpf);
     ps.setString(6, email);
 
-  }// clientes
+  }// inserir clientes
+
+
   public static void inserirProduto(Connection conn, Scanner sc) throws SQLException{
+    System.out.println("Qual o produto? (EX.: Vestido - Novo)");
+    String categoria = sc.next();
+    System.out.println("Qual o tamnho do produto? ");
+    String tamanhos = sc.next();
+    System.out.println("Qual o preco do produto? ");
+    double preco = sc.nextDouble();
+    System.out.println("Qual o valor de desconto? (Se não tiver desconto, coloque 0.)");
+    double desconto = sc.nextDouble();
+    System.out.println("Quantos estão disponíveis no estoque?");
+    int quantidade = sc.nextInt();
+
+    //função desconto
+      double valorT = preco * quantidade;
+
+      desconto = valorT - desconto;
+    //
+
 
     //criando a inserção
     String sql = "INSERT INTO produtos (categoria, tamanhos, preco, desconto, quantidade) values(?, ?, ?, ?, ?)";
@@ -70,21 +105,40 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
     ps.setDouble(4, desconto);
     ps.setInt(5, quantidade);
     ps.executeUpdate();
-    System.out.println("Produto "+categoria+" tamanho: "+tamanhos+" com o preco R$: "+preco+" desconto: "+desconto+", da quantidade: "+quantidade+"!");
-  }// inserir produtos
+    System.out.println("Produto "+categoria+" tamanho: "+tamanhos+" com o preco R$: "+preco+"Valopr do desconto: "+desconto+", da quantidade: "+quantidade+"!");
+  }
+
+
+  // inserir produtos
 
   public static void inserirFuncionario(Connection conn, Scanner sc) throws SQLException{
 
     //criando a inserção
-    String sql = "INSERT INTO funcionarios(nome, endereco, telefone, data_niver, email, senha) values(?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO funcionarios(nome, endereco, telefone, data_niver, cpf, email, senha) values(?, ?, ?, ?, ?, ?, ?)";
+    System.out.println("QUal o nome do funcionário? ");
+    String nome = sc.next();
+    System.out.println("QUal o endereço do funcionário? ");
+    String endereco = sc.next();
+    System.out.println("QUal o telefone do funcionário? ");
+    String telefone = sc.next();
+    System.out.println("QUal a data de nascimento do funcionário? (aaaa-mm-dd)");
+    String data_niver_str = sc.next();
+    LocalDate data_niver = LocalDate.parse(data_niver_str);
+    System.out.println("Qual o CPF do funcionário?");
+    String cpf = sc.next();
+    System.out.println("QUal o email do funcionário? ");
+    String email = sc.next();
+    System.out.println("QUal o CPF do funcionário? ");
+    String senha = sc.next();
 
     PreparedStatement ps = conn.prepareStatement(sql);
     ps.setString(1, nome);
     ps.setString(2, endereco);
     ps.setString(3, telefone);
-    ps.setDate(4, data_niver);
+    ps.setDate(4, Date.valueOf(data_niver));
     ps.setString(5, email);
-    ps.setString(6, senha);
+    ps.setString(6, email);
+    ps.setString(7, senha);
     ps.executeUpdate();
     System.out.println("Funcionário "+nome+" inserido com sucesso!");
     ps.close();
@@ -129,6 +183,106 @@ public static void consultarProduto(Connection conn) throws SQLException{
     }
 
 
+  }// consulta o funcionario
+
+  public static void deletarCliente(Connection conn, Scanner sc) throws SQLException{
+    System.out.println("Digite o ID para ser delatado?");
+    int id = sc.nextInt();
+
+    String sql = "DELETE FROM clientes WHERE id =?";
+
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setInt(1, id);
+
+    int linhasafetadas = ps.executeUpdate();
+    ps.close();
+
+    if (linhasafetadas > 0){
+      System.out.println(id+" - APAGADO COM SUCESSO!");
+    }else {
+      System.out.println(+id+" - NÂO INDENTIFICADO!");
+    }
+  }
+
+  public static void deletarProdutos(Connection conn, Scanner sc) throws SQLException{
+    //pergunta
+    System.out.println("Digite o ID para ser delatado?");
+    int id = sc.nextInt();
+
+    String sql = "DELETE FROM produtos WHERE id =?";
+
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setInt(1, id);
+
+    int linhasafetadas = ps.executeUpdate();
+    ps.close();
+
+    if (linhasafetadas > 0){
+      System.out.println(id+" - APAGADO COM SUCESSO!");
+    }else {
+      System.out.println(+id+" - NÂO INDENTIFICADO!");
+    }
+  }
+
+  public static void deletarFuncionarios(Connection conn, Scanner sc) throws SQLException{
+    //pergunta
+    System.out.println("Digite o ID para ser delatado?");
+    int id = sc.nextInt();
+
+    String sql = "DELETE FROM funcionarios WHERE id =?";
+
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setInt(1, id);
+
+    int linhasafetadas = ps.executeUpdate();
+    ps.close();
+
+    if (linhasafetadas > 0){
+      System.out.println(id+" - APAGADO COM SUCESSO!");
+    }else {
+      System.out.println(+id+" - NÂO INDENTIFICADO!");
+    }
+  }// delete
+
+
+  public static void atualizarCliente(Connection conn, Scanner sc) throws SQLException{
+
+    String sql = "UPDATE clientes SET nome = ?, endereco = ?, telefone = ?, email =? WHERE id = ?";
+
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setString(1, novoNome);
+    ps.setString(2, novoEndereco);
+    ps.setString(3, novoTel);
+    ps.setString(4, novoEmail);
+    ps.setInt(5, id);
+
+  }
+
+  public static void atualizarCliente(Connection conn, Scanner sc) throws SQLException{
+
+    String sql = "UPDATE clientes SET nome = ?, endereco = ?, telefone = ?, email =?, senha = ?  WHERE id = ?";
+
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setString(1, novoNome);
+    ps.setString(2, novoEndereco);
+    ps.setString(3, novoTel);
+    ps.setString(4, novoEmail);
+    ps.setString(5, novaSenha);
+    ps.setInt(6, id);
+
+  }
+
+  public static void atualizarCliente(Connection conn, Scanner sc) throws SQLException{
+
+    String sql = "UPDATE clientes SET categoria = ?, tamanho = ?, preco = ?, email =? WHERE id = ?";
+
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setString(1, novoNome);
+    ps.setString(2, novoEndereco);
+    ps.setString(3, novoTel);
+    ps.setString(4, novoEmail);
+    ps.setInt(5, id);
+
   }
 
 
@@ -146,21 +300,44 @@ public static void consultarProduto(Connection conn) throws SQLException{
 
 
 
-  //não mexer ao tudo
+
+ public static void MENU(){
+   System.out.println("\n MENU ONG IANSA");
+   System.out.println("1. Inserir Produto/Cliente/Funcionário");
+   System.out.println("1. Inserir Produto/Cliente/Funcionário");
+   System.out.println("1. Inserir Produto/Cliente/Funcionário");
+   System.out.println("1. Inserir Produto/Cliente/Funcionário");
+ }
+
+
+
+
+
+
+
+
+
+
+  //não mexer demais
   public static void main(String[] args) {
     String url = "jdbc:postgresql://localhost:5432/iansa";
     try {
       Connection conn = DriverManager.getConnection(url, "postgres", "fatec123*");
       System.out.println("Conexão feita!");
 
-      // tables :3
+      // tables :3 (não mexer)
       criarTabelaclientes(conn);
       criarTabelaprodutos(conn);
       criarTabelafuncionarios(conn);
+      //
 
       // Scaner
       Scanner sc = new Scanner(System.in);
 
+      //exibição do menu
+      do {
+
+      }while (op != 0);
 
     } catch (SQLException e) {
       System.out.println("Erro! "+ e.getMessage());

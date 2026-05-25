@@ -44,7 +44,7 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
     stmt.execute(sql);
     stmt.close();
   }
-/// ////////////////////////////////////////////////////////////////////////////////////////////
+//======INSERÇÃO========================================================================================================
 
   public static void inserirCliente(Connection conn, Scanner sc) throws SQLException{
     //perguntas
@@ -144,7 +144,7 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
     ps.close();
 
   }// cadastro do funcionário
-
+//=====CONSULTA=========================================================================================================
 public static void consultarProduto(Connection conn) throws SQLException{
 
   String sql = "SELECT * FROM produtos ORDER BY nome";
@@ -185,6 +185,7 @@ public static void consultarProduto(Connection conn) throws SQLException{
 
   }// consulta o funcionario
 
+  //============DELETE==================================================================================================
   public static void deletarCliente(Connection conn, Scanner sc) throws SQLException{
     System.out.println("Digite o ID para ser delatado?");
     int id = sc.nextInt();
@@ -244,8 +245,18 @@ public static void consultarProduto(Connection conn) throws SQLException{
     }
   }// delete
 
-
+//===========ATUALIZAÇÃO================================================================================================
   public static void atualizarCliente(Connection conn, Scanner sc) throws SQLException{
+    System.out.println("Qual o id para ser atualizado?");
+    int id = sc.nextInt();
+    System.out.println("Informe o novo nome: ");
+    String novoNome = sc.next();
+    System.out.println("Informe o novo endereço: ");
+    String novoEndereco = sc.next();
+    System.out.println("Informe o novo telefone: ");
+    String novoTel = sc.next();
+    System.out.println("Informe o novo email: ");
+    String novoEmail = sc.next();
 
     String sql = "UPDATE clientes SET nome = ?, endereco = ?, telefone = ?, email =? WHERE id = ?";
 
@@ -258,9 +269,20 @@ public static void consultarProduto(Connection conn) throws SQLException{
 
   }
 
-  public static void atualizarCliente(Connection conn, Scanner sc) throws SQLException{
-
-    String sql = "UPDATE clientes SET nome = ?, endereco = ?, telefone = ?, email =?, senha = ?  WHERE id = ?";
+  public static void atualizarFuncionario(Connection conn, Scanner sc) throws SQLException{
+    System.out.println("Informe o id que queira mudar: ");
+    int id = sc.nextInt();
+    System.out.println("Informe o novo nome: ");
+    String novoNome = sc.next();
+    System.out.println("Informe o novo endereco: ");
+    String novoEndereco = sc.next();
+    System.out.println("Informe o novo telefone: ");
+    String novoTel = sc.next();
+    System.out.println("Informe o novo email: ");
+    String novoEmail = sc.next();
+    System.out.println("Informe a nova senha: ");
+    String novaSenha = sc.next();
+    String sql = "UPDATE funcionarios SET nome = ?, endereco = ?, telefone = ?, email =?, senha = ?  WHERE id = ?";
 
     PreparedStatement ps = conn.prepareStatement(sql);
     ps.setString(1, novoNome);
@@ -272,41 +294,41 @@ public static void consultarProduto(Connection conn) throws SQLException{
 
   }
 
-  public static void atualizarCliente(Connection conn, Scanner sc) throws SQLException{
+  public static void atualizarProduto(Connection conn, Scanner sc) throws SQLException{
+    System.out.println("Infrome o id que queira atualizar: ");
+    int id = sc.nextInt();
+    System.out.println("Informe a nova categoria: ");
+    String novoCategoria = sc.next();
+    System.out.println("Informe o novo preço: R$ ");
+    double novoPreco = sc.nextDouble();
+    System.out.println("Informe o novo tamanho: ");
+    String novoTamanho = sc.next();
+    System.out.println("Informe o novo desconto (se não tiver, coloque: 0): ");
+    double novoDesconto = sc.nextDouble();
+    System.out.println("Informe a quantidade: ");
+    int novoQtd = sc.nextInt();
 
-    String sql = "UPDATE clientes SET categoria = ?, tamanho = ?, preco = ?, email =? WHERE id = ?";
+    String sql = "UPDATE clientes SET categoria = ?, tamanho = ?, preco = ?, desconto = ?, quantidade = ? WHERE id = ?";
 
     PreparedStatement ps = conn.prepareStatement(sql);
-    ps.setString(1, novoNome);
-    ps.setString(2, novoEndereco);
-    ps.setString(3, novoTel);
-    ps.setString(4, novoEmail);
-    ps.setInt(5, id);
+    ps.setString(1, novoCategoria);
+    ps.setDouble(2, novoPreco);
+    ps.setString(3, novoTamanho);
+    ps.setDouble(4, novoDesconto);
+    ps.setInt(5, novoQtd);
+    ps.setInt(6, id);
 
   }
+//=====================================================================================================================
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- public static void MENU(){
+  public static void MENU(){
    System.out.println("\n MENU ONG IANSA");
    System.out.println("1. Inserir Produto/Cliente/Funcionário");
-   System.out.println("1. Inserir Produto/Cliente/Funcionário");
-   System.out.println("1. Inserir Produto/Cliente/Funcionário");
-   System.out.println("1. Inserir Produto/Cliente/Funcionário");
+   System.out.println("2. Consultar Produto/Cliente/Funcionário");
+   System.out.println("3. Atualizar Produto/Cliente/Funcionário");
+   System.out.println("4. Deletar Produto/Cliente/Funcionário");
+   System.out.println("0. Sair");
  }
 
 

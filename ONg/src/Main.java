@@ -48,18 +48,18 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
 
   public static void inserirCliente(Connection conn, Scanner sc) throws SQLException{
     //perguntas
-    System.out.println("QUal o nome do funcionário? ");
+    System.out.println("QUal o nome do cliente? ");
     String nome = sc.next();
-    System.out.println("QUal o endereço do funcionário? ");
+    System.out.println("QUal o endereço do cliente? ");
     String endereco = sc.next();
-    System.out.println("QUal o telefone do funcionário? ");
+    System.out.println("QUal o telefone do cliente? ");
     String telefone = sc.next();
-    System.out.println("QUal a data de nascimento do funcionário? (aaaa-mm-dd)");
+    System.out.println("QUal a data de nascimento do cliente? (aaaa-mm-dd)");
     String data_niver_str = sc.next();
     LocalDate data_niver = LocalDate.parse(data_niver_str);
-    System.out.println("QUal o CPF do funcionário? ");
+    System.out.println("QUal o CPF do cliente? ");
     String cpf = sc.next();
-    System.out.println("QUal o email do funcionário? ");
+    System.out.println("QUal o email do cliente? ");
     String email = sc.next();
 
     //criando a inserção
@@ -136,7 +136,7 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
     ps.setString(2, endereco);
     ps.setString(3, telefone);
     ps.setDate(4, Date.valueOf(data_niver));
-    ps.setString(5, email);
+    ps.setString(5, cpf);
     ps.setString(6, email);
     ps.setString(7, senha);
     ps.executeUpdate();
@@ -144,6 +144,7 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
     ps.close();
 
   }// cadastro do funcionário
+
 //=====CONSULTA=========================================================================================================
 public static void consultarProduto(Connection conn) throws SQLException{
 
@@ -174,18 +175,21 @@ public static void consultarProduto(Connection conn) throws SQLException{
 
     while (rs.next()){
       int id = rs.getInt("id");
-      String categoria = rs.getString("categoria");
-      String tamanhos = rs.getString("tamanhos");
-      double preco = rs.getDouble("preco");
-      double desconto = rs.getDouble("desconto");
-      int quantidade = rs.getInt("quantidade");
-      System.out.printf("[%d] %s - R$ %.2f (quantidade: %d)%n", id, categoria,tamanhos, preco, desconto, quantidade);
+      String nome = rs.getString("nome");
+      String endereco = rs.getString("endereco");
+      String telefone = rs.getString("telefone");
+      Date data_niver = rs.getDate("data_niver");
+      String cpf = rs.getString("cpf");
+      String email = rs.getString("email");
+      String senha = rs.getString("senha");
+      System.out.printf("[%d] %s - R$ %.2f (nome: %d)%n", id, nome, endereco, telefone, data_niver, cpf, email, senha);
     }
 
 
   }// consulta o funcionario
 
   //============DELETE==================================================================================================
+
   public static void deletarCliente(Connection conn, Scanner sc) throws SQLException{
     System.out.println("Digite o ID para ser delatado?");
     int id = sc.nextInt();
@@ -329,9 +333,25 @@ public static void consultarProduto(Connection conn) throws SQLException{
    System.out.println("3. Atualizar Produto/Cliente/Funcionário");
    System.out.println("4. Deletar Produto/Cliente/Funcionário");
    System.out.println("0. Sair");
+   System.out.println("qual a opção?: ");
  }
 
+  public static void processarOpcao(Connection conn, Scanner sc, int op) throws SQLException{
+    switch (op){
+      case 1:
+         System.out.println("Você quer inserir Produto (p), Cliente (c) ou Funcionário (f)? ");
+          String aq = sc.next();
+          if (aq.equals("p")){
+            inserirProduto(conn, sc);
+          } else if (aq.equals("c")) {
+            inserirCliente(conn, sc);
+          }else {
+            inserirFuncionario(conn, sc);
+          }
+        break;
 
+    }
+  }
 
 
 
@@ -355,10 +375,15 @@ public static void consultarProduto(Connection conn) throws SQLException{
 
       // Scaner
       Scanner sc = new Scanner(System.in);
+      int op = 1;
+      //String op2 = "";
 
       //exibição do menu
       do {
-
+        MENU();
+        op = sc.nextInt();
+        sc.nextLine();
+        processarOpcao(conn, sc, op);
       }while (op != 0);
 
     } catch (SQLException e) {

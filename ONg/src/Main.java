@@ -48,19 +48,21 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
 
   public static void inserirCliente(Connection conn, Scanner sc) throws SQLException{
     //perguntas
+
     System.out.println("QUal o nome do cliente? ");
+    sc.nextLine();
     String nome = sc.next();
     System.out.println("QUal o endereço do cliente? ");
-    String endereco = sc.next();
+    String endereco = sc.next(); sc.nextLine();
     System.out.println("QUal o telefone do cliente? ");
-    String telefone = sc.next();
+    String telefone = sc.next();sc.nextLine();
     System.out.println("QUal a data de nascimento do cliente? (aaaa-mm-dd)");
     String data_niver_str = sc.next();
-    LocalDate data_niver = LocalDate.parse(data_niver_str);
+    LocalDate data_niver = LocalDate.parse(data_niver_str); sc.nextLine();
     System.out.println("QUal o CPF do cliente? ");
-    String cpf = sc.next();
+    String cpf = sc.next(); sc.nextLine();
     System.out.println("QUal o email do cliente? ");
-    String email = sc.next();
+    String email = sc.next(); sc.nextLine();
 
     //criando a inserção
     String sql = "INSERT INTO clientes(nome, endereco, telefone, data_niver, cpf, email) values(?, ?, ?, ?, ?, ?)";
@@ -72,27 +74,30 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
     ps.setDate(4, Date.valueOf(data_niver));
     ps.setString(5, cpf);
     ps.setString(6, email);
-
+    System.out.println("Cliente "+nome+" inserido com sucesso!");
   }// inserir clientes
 
 
   public static void inserirProduto(Connection conn, Scanner sc) throws SQLException{
-    System.out.println("Qual o produto? (EX.: Vestido - Novo)");
-    String categoria = sc.next();
-    System.out.println("Qual o tamnho do produto? ");
-    String tamanhos = sc.next();
+    System.out.println("Qual o produto? (EX.: Vestido-Novo)");
+    sc.nextLine();
+    String categoria = sc.nextLine();
+    System.out.println("Qual o tamanho do produto? ");
+    String tamanhos = sc.next(); sc.nextLine();
     System.out.println("Qual o preco do produto? ");
-    double preco = sc.nextDouble();
+    double preco = sc.nextDouble(); sc.nextLine();
     System.out.println("Qual o valor de desconto? (Se não tiver desconto, coloque 0.)");
-    double desconto = sc.nextDouble();
+    double desconto = sc.nextDouble(); sc.nextLine();
     System.out.println("Quantos estão disponíveis no estoque?");
-    int quantidade = sc.nextInt();
+    int quantidade = sc.nextInt(); sc.nextLine();
 
     //função desconto
-      double valorT = preco * quantidade;
-
-      desconto = valorT - desconto;
-    //
+     if(desconto == 0){
+        desconto = 0.0;
+     }else {
+       double valorT = preco * quantidade;
+       desconto = valorT - desconto;
+     }
 
 
     //criando a inserção
@@ -112,24 +117,27 @@ public static void criarTabelaclientes(Connection conn) throws SQLException{
   // inserir produtos
 
   public static void inserirFuncionario(Connection conn, Scanner sc) throws SQLException{
+    System.out.println("QUal o nome do funcionário? ");
+    sc.nextLine();
+    String nome = sc.next();
+    System.out.println("QUal o endereço do funcionário? ");
+    String endereco = sc.next(); sc.nextLine();
+    System.out.println("QUal o telefone do funcionário? ");
+    String telefone = sc.next(); sc.nextLine();
+    System.out.println("QUal a data de nascimento do funcionário? (aaaa-mm-dd)");
+    String data_niver_str = sc.next();
+    LocalDate data_niver = LocalDate.parse(data_niver_str); sc.nextLine();
+    System.out.println("Qual o CPF do funcionário?");
+    String cpf = sc.next(); sc.nextLine();
+    System.out.println("QUal o email do funcionário? ");
+    String email = sc.next(); sc.nextLine();
+    System.out.println("QUal o CPF do funcionário? ");
+    String senha = sc.next(); sc.nextLine();
 
     //criando a inserção
     String sql = "INSERT INTO funcionarios(nome, endereco, telefone, data_niver, cpf, email, senha) values(?, ?, ?, ?, ?, ?, ?)";
-    System.out.println("QUal o nome do funcionário? ");
-    String nome = sc.next();
-    System.out.println("QUal o endereço do funcionário? ");
-    String endereco = sc.next();
-    System.out.println("QUal o telefone do funcionário? ");
-    String telefone = sc.next();
-    System.out.println("QUal a data de nascimento do funcionário? (aaaa-mm-dd)");
-    String data_niver_str = sc.next();
-    LocalDate data_niver = LocalDate.parse(data_niver_str);
-    System.out.println("Qual o CPF do funcionário?");
-    String cpf = sc.next();
-    System.out.println("QUal o email do funcionário? ");
-    String email = sc.next();
-    System.out.println("QUal o CPF do funcionário? ");
-    String senha = sc.next();
+
+
 
     PreparedStatement ps = conn.prepareStatement(sql);
     ps.setString(1, nome);
@@ -349,7 +357,27 @@ public static void consultarProduto(Connection conn) throws SQLException{
             inserirFuncionario(conn, sc);
           }
         break;
+      case 2:
+        System.out.println("Você quer consultar Produto (p), Cliente (c) ou Funcionário (f)? ");
+         aq = sc.next();
+        if (aq.equals("p")){
+          consultarProduto(conn);
+        } else if (aq.equals("f")) {
+          consultarFuncionario(conn);
+        }
 
+        break;
+        case 3:
+          System.out.println("Você quer atualizar Produto (p), Cliente (c) ou Funcionário (f)? ");
+            aq = sc.next();
+          if (aq.equals("p")){
+            inserirProduto(conn, sc);
+          } else if (aq.equals("c")) {
+            inserirCliente(conn, sc);
+          }else {
+            inserirFuncionario(conn, sc);
+          }
+          break;
     }
   }
 

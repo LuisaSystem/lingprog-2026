@@ -4,8 +4,9 @@ public class livro{
     public String titulo;
     public String autor;
     public boolean disponivel;
+    public static int totalivros;
 
-    //método construtor
+    //método construtor - sobregarga
     public livro (){
         this("Livro não cadastrado", "Autor não cadastrado");
     }
@@ -14,27 +15,32 @@ public class livro{
         this.titulo = titulo;
         this.autor = autor;
         this.disponivel = true;
+        livro.totalivros++;
+    }
+
+    //metodo de classe
+    public static int getTotalivros(){
+        return livro.totalivros;
     }
 
     //metodos de instância
-    public void nopeYes(boolean disponivel){
-        if (disponivel == true){
+    public void emprestar(){
+        if (this.disponivel){
+            this.disponivel = false;
             System.out.println("check!");
         }
-
-        if(!disponivel){
+        else {
             System.out.println("not check!");
         }
     }
-
-    public void codLivro(double cod){
-        if (cod > 500.0) System.out.println("Código limite!");
+    public void devolver(){
+        this.disponivel = true;
+        System.out.println("Voltou para casa!");
     }
-
     public void exibirLivro(){
-        System.out.println("Titulo: "+ titulo);
-        System.out.println("Autor: "+ autor);
-        System.out.println("Dispponivel?: "+ disponivel);
+        System.out.println("\nTitulo: "+ this.titulo +
+                " Autor: "+ this.autor +
+                " Disponivel? "+(this.disponivel ? "Disponivel": "Emprestado"));
     }
 
 }

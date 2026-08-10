@@ -10,5 +10,10 @@ public class Biblioteca {
         l1.exibirLivro();
         l1.devolver();
         l1.exibirLivro();
+
+        //l2 e l3 é msm coisa
+        System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        System.out.println("Total de livros: " + livro.getTotalivros());
+
     }
 }

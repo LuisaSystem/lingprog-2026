@@ -37,9 +37,6 @@ public class livro{
         System.out.println("Dispponivel?: "+ disponivel);
     }
 
-    //metodos de classe (static)
-
-
 }
 
 

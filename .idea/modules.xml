@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Arquivos/Arquivos.iml" filepath="$PROJECT_DIR$/Arquivos/Arquivos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Arquivos_exercicios/Arquivos_exercicios.iml" filepath="$PROJECT_DIR$/Arquivos_exercicios/Arquivos_exercicios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Biblioteca_Banco/Biblioteca_Banco.iml" filepath="$PROJECT_DIR$/Biblioteca_Banco/Biblioteca_Banco.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Encapsulamento/Encapsulamento.iml" filepath="$PROJECT_DIR$/Encapsulamento/Encapsulamento.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Energia/Energia.iml" filepath="$PROJECT_DIR$/Energia/Energia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ExemploSwitch/ExemploSwitch.iml" filepath="$PROJECT_DIR$/ExemploSwitch/ExemploSwitch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IntroducaoJava/IntroducaoJava.iml" filepath="$PROJECT_DIR$/IntroducaoJava/IntroducaoJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaLanches/JavaLanches.iml" filepath="$PROJECT_DIR$/JavaLanches/JavaLanches.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Matriz/Matriz.iml" filepath="$PROJECT_DIR$/Matriz/Matriz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ONg/ONg.iml" filepath="$PROJECT_DIR$/ONg/ONg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/POO_Intro/POO_Intro.iml" filepath="$PROJECT_DIR$/POO_Intro/POO_Intro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TrabalhoVetor/TrabalhoVetor.iml" filepath="$PROJECT_DIR$/TrabalhoVetor/TrabalhoVetor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TrablhoRepeticao/TrablhoRepeticao.iml" filepath="$PROJECT_DIR$/TrablhoRepeticao/TrablhoRepeticao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/banco/banco.iml" filepath="$PROJECT_DIR$/banco/banco.iml" />
+      <module fileurl="file://$PROJECT_DIR$/estruturarepeticao/estruturarepeticao.iml" filepath="$PROJECT_DIR$/estruturarepeticao/estruturarepeticao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/funcao/funcao.iml" filepath="$PROJECT_DIR$/funcao/funcao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/lingprog-2026.iml" filepath="$PROJECT_DIR$/.idea/lingprog-2026.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vetor/vetor.iml" filepath="$PROJECT_DIR$/vetor/vetor.iml" />
+    </modules>
+  </component>
+</project>

@@ -45,4 +45,12 @@ public class biblioteca {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
+    public void emprestar(String titulo){
+        for (Livro livro : this.livros){
+            if (livro.getTitulo().equals(titulo)){
+                livro.emprestar();// emprestou  o livro
+            }
+        }
+    }
 }

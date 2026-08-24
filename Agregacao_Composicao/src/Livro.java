@@ -1,7 +1,7 @@
 public class Livro {
     private String titulo, autor, editora;
     private int ano;
-
+    private boolean diponivel;
     public Livro(){
         this("sem título", "sem autor", "sem editora", 0);
     }
@@ -37,5 +37,17 @@ public class Livro {
     }
     public int getAno() {
         return this.ano;
+    }
+
+    public boolean isDiponivel() {
+        return diponivel;
+    }
+
+    public void setDiponivel(boolean diponivel) {
+        this.diponivel = diponivel;
+    }
+
+    public void emprestar(){
+        this.diponivel = false;
     }
 }

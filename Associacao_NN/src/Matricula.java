@@ -8,10 +8,10 @@ public class Matricula {
     private Disciplina disciplina;
 
     public Matricula() {
-        this("sem numero",0, "sem data", "sem aluno", "sem identificação da disciplina");
+        this(0, LocalDateTime.now(), null, null);
     }
 
-    public Matricula(int num, float nota, LocalDateTime data, Aluno aluno, Disciplina disciplina){
+    public Matricula(int num, LocalDateTime data, Aluno aluno, Disciplina disciplina){
         this.num = num;
         this.nota = 0;
         this.data = data;

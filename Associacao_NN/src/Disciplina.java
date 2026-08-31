@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 
-public class Aluno {
+public class Disciplina {
     private String nome;
-    private String cpf;
+    private  String sigla;
     private ArrayList<Matricula> matriculas;
+    public Disciplina() {
+        this("sem nome", "sem sigla identificada");
+    }
 
     public ArrayList<Matricula> getMatriculas() {
         return matriculas;
@@ -12,12 +15,9 @@ public class Aluno {
         this.matriculas = matriculas;
     }
 
-    public Aluno() {
-        this("Sem nome", "sem cpf");
-    }
-    public Aluno(String nome, String cpf){
+    public Disciplina(String nome, String sigla){
         this.nome = nome;
-        this.cpf = cpf;
+        this.sigla = sigla;
     }
 
     public String getNome() {
@@ -27,18 +27,18 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getSigla() {
+        return sigla;
     }
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 
     @Override
     public String toString() {
-        return "Aluno{" +
+        return "Disciplina{" +
                 "nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
+                ", sigla='" + sigla + '\'' +
                 ", matriculas=" + matriculas +
                 '}';
     }

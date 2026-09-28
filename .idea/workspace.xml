@@ -2,12 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9fd02f0-84eb-4584-bc15-74e3a738b1de" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Exercido_Daniel/src/Associacao_NN_exer/Biblioteca/Autor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercido_Daniel/src/Associacao_NN_exer/Biblioteca/Autoria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercido_Daniel/src/Associacao_NN_exer/Biblioteca/Biblioteca.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercido_Daniel/src/Associacao_NN_exer/Biblioteca/Livro.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercido_Daniel/src/Associacao_NN_exer/Estudio/Ator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercido_Daniel/src/Associacao_NN_exer/Estudio/Atuacao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercido_Daniel/src/Associacao_NN_exer/Estudio/Estudio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercido_Daniel/src/Associacao_NN_exer/Estudio/Filme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -20,17 +37,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "24",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/1090482521003/IdeaProjects/lingprog-2026/Heranca",
-    "onboarding.tips.debug.path": "C:/Users/1090482521003/IdeaProjects/lingprog-2026/Heranca/src/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;24&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/carol/IdeaProjects/lingprog-2026&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/carol/IdeaProjects/lingprog-2026/Exercido_Daniel/src/Main.java&quot;
   }
-}]]></component>
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -54,6 +79,11 @@
           <url>file://$PROJECT_DIR$/Heranca/src/Main.java</url>
           <line>11</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Exercido_Daniel/src/Main.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

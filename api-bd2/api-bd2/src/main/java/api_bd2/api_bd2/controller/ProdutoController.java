@@ -58,6 +58,6 @@ public class ProdutoController {
         if (atualizado != null){
             return ResponseEntity.ok(atualizado);
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.notFound().build();// 404
     }
 }
